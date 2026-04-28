@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { TerminalIcon } from "lucide-react";
 import SkillCard from "#/components/skill-card";
-import { dummySkills, skills } from "#/lib/dummy-skills";
+import { dummySkills } from "#/lib/dummy-skills";
 
 export const Route = createFileRoute("/")({ component: Home });
 
