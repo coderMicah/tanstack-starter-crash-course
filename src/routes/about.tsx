@@ -1,24 +1,13 @@
-import { convexQuery } from "@convex-dev/react-query";
-import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { TerminalIcon } from "lucide-react";
 import SkillCard from "#/components/skill-card";
-import { api } from "../../convex/_generated/api";
+import { dummySkills } from "#/lib/dummy-skills";
 
-export const Route = createFileRoute("/")({
-	component: Home,
-	loader: async ({ context }) => {
-		// 1. Prefetch data to avoid loading states during SSR
-		await context.queryClient.ensureQueryData(
-			convexQuery(api.skills.getAllSkills, {}),
-		);
-	},
+export const Route = createFileRoute("/about")({
+	component: RouteComponent,
 });
 
-function Home() {
-	const { data: dummySkills } = useSuspenseQuery(
-		convexQuery(api.skills.getAllSkills, {}),
-	);
+function RouteComponent() {
 	return (
 		<div id="home">
 			<section className="hero">
@@ -35,11 +24,11 @@ function Home() {
 				</div>
 
 				<div className="actions">
-					<Link to="/skills" className="btn-primary">
+					<Link to="/" className="btn-primary">
 						<TerminalIcon size={18} />
 						<span>Browse Registry</span>
 					</Link>
-					<Link to="/skills/new" className="btn-secondary">
+					<Link to="/" className="btn-secondary">
 						<TerminalIcon size={18} />
 						<span>Publish Skills</span>
 					</Link>
@@ -58,7 +47,7 @@ function Home() {
 					{dummySkills.length > 0 ? (
 						<div className="skills-grid">
 							{dummySkills.map((skill) => (
-								<SkillCard key={skill.title} {...skill} />
+								<SkillCard key={skill.id} {...skill} />
 							))}
 						</div>
 					) : (

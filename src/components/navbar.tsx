@@ -23,8 +23,8 @@ const Navbar = () => {
 					<Link to="/sign-in/$" className="btn-primary">
 						<LogIn size={16} /> Sign In
 					</Link>
-					{/* <SignInButton mode="modal" /> */}
-					{/* <SignUpButton /> */}
+					{/* <SignInButton mode="modal" /> 
+				     <SignUpButton /> */}
 				</Show>
 			</div>
 		</nav>
